@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    restart: always
+
+  whoami:
+    image: jwilder/whoami
+    restart: always
+    environment:
+      - VIRTUAL_HOST=whoami.local
